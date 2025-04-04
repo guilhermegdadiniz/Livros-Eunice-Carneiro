@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Livros - Eunice Carneiro</title>
   <style>
     body {
       font-family: sans-serif;
       padding: 20px;
       background-color: #f4f4f4;
+      text-align: center;
     }
     h1 {
-      text-align: center;
+      margin-bottom: 20px;
     }
     ul {
       list-style: none;
@@ -33,25 +34,59 @@
     a:hover {
       color: #0077cc;
     }
+    #pdfViewer {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.8);
+    }
+    iframe {
+      width: 90%;
+      height: 90%;
+      border: none;
+      display: block;
+      margin: 5vh auto;
+      background: #fff;
+      border-radius: 8px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <h1>Livros - Eunice Carneiro</h1>
   <ul>
-    <li><a href="A%20ABOBORA%20GIGANTE.pdf" target="_blank">A ABOBORA GIGANTE</a></li>
-    <li><a href="A%20AGUA%20DA%20VIDA.pdf" target="_blank">A AGUA DA VIDA</a></li>
-    <li><a href="A%20AGUA%20NOSSA%20DE%20CADA%20DIA.pdf" target="_blank">A AGUA NOSSA DE CADA DIA</a></li>
-    <li><a href="A%20ARRAIA%20QUE%20VIROU%20PIPA.pdf" target="_blank">A ARRAIA QUE VIROU PIPA</a></li>
-    <li><a href="A%20ARVORE%20GENEROSA.pdf" target="_blank">A ARVORE GENEROSA</a></li>
-    <li><a href="A%20BALEIA%20ALEGRE.pdf" target="_blank">A BALEIA ALEGRE</a></li>
-    <li><a href="A%20BATALHA%20DOS%20GENEROS%20TEXTUAIS.pdf" target="_blank">A BATALHA DOS GENEROS TEXTUAIS</a></li>
-    <li><a href="A%20BELA%20ADORMECIDA.pdf" target="_blank">A BELA ADORMECIDA</a></li>
-    <li><a href="A%20BELA%20DANCA%20DA%20LUA%20E%20DO%20SOL.pdf" target="_blank">A BELA DANCA DA LUA E DO SOL</a></li>
-    <li><a href="A%20BELA%20E%20O%20MONSTRO.pdf" target="_blank">A BELA E O MONSTRO</a></li>
-    <li><a href="A%20BICICLETA%20VOADORA.pdf" target="_blank">A BICICLETA VOADORA</a></li>
-    <li><a href="A%20BORBOLETA%20AZUL.pdf" target="_blank">A BORBOLETA AZUL</a></li>
-    <li><a href="A%20BORBOLETA%20E%20A%20ARVORE%20DESENCANTADA.pdf" target="_blank">A BORBOLETA E A ARVORE DESENCANTADA</a></li>
-    <li><a href="A%20FORMIGA%20QUE%20QUERIA%20CANTAR.pdf" target="_blank">A FORMIGA QUE QUERIA CANTAR</a></li>
+    <li><a href="#" onclick="openPDF('A%20ABOBORA%20GIGANTE.pdf')">A ABOBORA GIGANTE</a></li>
+    <li><a href="#" onclick="openPDF('A%20AGUA%20DA%20VIDA.pdf')">A AGUA DA VIDA</a></li>
+    <li><a href="#" onclick="openPDF('A%20FORMIGA%20QUE%20QUERIA%20CANTAR.pdf')">A FORMIGA QUE QUERIA CANTAR</a></li>
+    <!-- Adicione mais livros aqui -->
   </ul>
+
+  <div id="pdfViewer">
+    <span class="close-btn" onclick="closePDF()">✖</span>
+    <iframe id="pdfFrame"></iframe>
+  </div>
+
+  <script>
+    function openPDF(pdfFile) {
+      const pdfViewer = document.getElementById('pdfViewer');
+      const pdfFrame = document.getElementById('pdfFrame');
+      pdfFrame.src = `https://guilhermegdadiniz.github.io/livros-eunice-carneiro/${pdfFile}`;
+      pdfViewer.style.display = 'block';
+    }
+    function closePDF() {
+      document.getElementById('pdfViewer').style.display = 'none';
+      document.getElementById('pdfFrame').src = '';
+    }
+  </script>
 </body>
 </html>
