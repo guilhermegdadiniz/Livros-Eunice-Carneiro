@@ -40,9 +40,13 @@
     }
   </style>
 </head>
+
 <body>
+
   <h1>Livros - Eunice Carneiro</h1>
-  <ul>
+
+  <ul id="listaLivros">
+
   <li><a href="A%20HISTORIA%20QUE%20MORA%20NOS%20CONTA.pdf" target="_blank">A HISTORIA QUE MORA NOS CONTA</a></li>
   <li><a href="100%20LENDAS%20DO%20FOLCLORE%20BRASILEIRO.pdf" target="_blank">100 LENDAS DO FOLCLORE BRASILEIRO</a></li>
   <li><a href="A%20ABOBORA%20GIGANTE.pdf" target="_blank">A ABOBORA GIGANTE</a></li>
@@ -564,35 +568,35 @@
   <li><a href="VOCE%20JA%20TEM%20UMA%20MARQUINHA.pdf" target="_blank">VOCE JA TEM UMA MARQUINHA</a></li>
   <li><a href="XADREZ.pdf" target="_blank">XADREZ</a></li>
   <li><a href="MATEUS%20E%20O%20BRINQUEDO%20DESAPARECIDO.pdf" target="_blank">MATEUS E O BRINQUEDO DESAPARECIDO</a></li>
-  </ul>
+ </ul>
 
   <script>
-  const lista = document.getElementById("listaLivros");
+    document.addEventListener("DOMContentLoaded", function() {
 
-  const livros = Array.from(lista.children);
+      const lista = document.getElementById("listaLivros");
 
-  livros.sort((a, b) => {
-    const nomeA = a.querySelector("a").textContent.trim();
-    const nomeB = b.querySelector("a").textContent.trim();
+      const livros = Array.from(lista.querySelectorAll("li"));
 
-    return nomeA.localeCompare(nomeB, "pt-BR", {
-      numeric: true,
-      sensitivity: "base"
+      livros.sort(function(a, b) {
+
+        const nomeA = a.querySelector("a").textContent.trim();
+        const nomeB = b.querySelector("a").textContent.trim();
+
+        return nomeA.localeCompare(nomeB, "pt-BR", {
+          sensitivity: "base"
+        });
+
+      });
+
+      livros.forEach(function(livro) {
+        lista.appendChild(livro);
+      });
+
     });
-  });
-
-  livros.forEach(livro => lista.appendChild(livro));
-</script>
+  </script>
 
 </body>
 </html>
-</body>
-</html>
-
-
-
-
-
 
 
 
