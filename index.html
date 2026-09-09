@@ -1,49 +1,224 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Livros - Eunice Carneiro</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Livros - Escola Municipal Professora Eunice Carneiro</title>
+
   <style>
+
     body {
       font-family: sans-serif;
+      margin: 0;
       padding: 20px;
-      background-color: #f4f4f4;
+      background: #fdf6e3;
+    }
+
+    .logo {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    .logo img {
+      width: 180px;
+      max-width: 80%;
     }
 
     h1 {
       text-align: center;
+      color: #333;
+      font-size: 28px;
+      margin: 10px auto 5px;
+      max-width: 900px;
     }
 
-    ul {
+    .subtitulo {
+      text-align: center;
+      color: #666;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .voltar {
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+
+    .voltar a {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: white;
+      color: #555;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .voltar a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.18);
+    }
+
+    .busca {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+
+    .campo-busca {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 18px 55px 18px 20px;
+      border-radius: 18px;
+      border: 2px solid #ddd;
+      background: white;
+      font-size: 18px;
+      outline: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.10);
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    .campo-busca:focus {
+      border-color: #999;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+    }
+
+    .icone-busca {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 25px;
+      color: #777;
+      pointer-events: none;
+    }
+
+    #listaLivros {
       list-style: none;
       padding: 0;
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
-    li {
-      background: #fff;
-      margin: 8px 0;
-      padding: 12px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    #listaLivros li {
+      margin: 14px 0;
     }
 
-    a {
+    #listaLivros li a {
+      display: block;
+      padding: 20px;
+      border-radius: 18px;
+      text-align: center;
       text-decoration: none;
-      color: #333;
+      font-size: 21px;
       font-weight: bold;
+      color: #333;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    a:hover {
-      color: #0077cc;
+    #listaLivros li a:hover {
+      transform: scale(1.03);
+      box-shadow: 0 7px 12px rgba(0,0,0,0.20);
     }
+
+    .nenhum-resultado {
+      text-align: center;
+      color: #777;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .rodape {
+      text-align: center;
+      margin-top: 35px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+
+      body {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .subtitulo {
+        font-size: 16px;
+      }
+
+      #listaLivros li a {
+        font-size: 19px;
+        padding: 18px;
+      }
+
+      .campo-busca {
+        font-size: 16px;
+        padding: 16px 50px 16px 16px;
+      }
+
+    }
+
   </style>
+
 </head>
 
 <body>
 
-  <h1>Livros - Eunice Carneiro</h1>
+  <div class="logo">
+
+    <img
+      src="logo.png"
+      alt="Escola Municipal Professora Eunice Carneiro">
+
+  </div>
+
+  <h1>
+    📚 LIVROS 📚
+  </h1>
+
+  <div class="subtitulo">
+    ESCOLA MUNICIPAL PROFESSORA EUNICE CARNEIRO
+  </div>
+
+  <div class="voltar">
+
+    <a href="https://guilhermegdadiniz.github.io/atividadeseunicecarneiro/">
+      ← VOLTAR
+    </a>
+
+  </div>
+
+  <div class="busca">
+
+    <input
+      type="text"
+      id="campoBusca"
+      class="campo-busca"
+      placeholder="Digite o nome do livro..."
+      autocomplete="off">
+
+    <span class="icone-busca">
+      🔍
+    </span>
+
+  </div>
+
+  <div id="mensagem"></div>
 
   <ul id="listaLivros">
 
@@ -569,35 +744,118 @@
   <li><a href="XADREZ.pdf" target="_blank">XADREZ</a></li>
   <li><a href="MATEUS%20E%20O%20BRINQUEDO%20DESAPARECIDO.pdf" target="_blank">MATEUS E O BRINQUEDO DESAPARECIDO</a></li>
   <li><a href="O%20ALFAIATE%20VALENTE.pdf" target="_blank">O ALFAIATE VALENTE</a></li>
- </ul>
+
+  </ul>
+
+  <div class="rodape">
+
+    Escola Municipal Professora Eunice Carneiro
+
+  </div>
 
   <script>
+
     document.addEventListener("DOMContentLoaded", function() {
 
-      const lista = document.getElementById("listaLivros");
+      const lista =
+        document.getElementById("listaLivros");
 
-      const livros = Array.from(lista.querySelectorAll("li"));
+      const campo =
+        document.getElementById("campoBusca");
+
+      const mensagem =
+        document.getElementById("mensagem");
+
+      const livros = Array.from(
+        lista.querySelectorAll("li")
+      );
 
       livros.sort(function(a, b) {
 
-        const nomeA = a.querySelector("a").textContent.trim();
-        const nomeB = b.querySelector("a").textContent.trim();
+        const nomeA =
+          a.querySelector("a").textContent.trim();
 
-        return nomeA.localeCompare(nomeB, "pt-BR", {
-          sensitivity: "base"
-        });
+        const nomeB =
+          b.querySelector("a").textContent.trim();
+
+        return nomeA.localeCompare(
+          nomeB,
+          "pt-BR",
+          {
+            sensitivity: "base"
+          }
+        );
 
       });
 
       livros.forEach(function(livro) {
+
         lista.appendChild(livro);
+
+      });
+
+      campo.addEventListener("input", function() {
+
+        const busca =
+          campo.value
+            .trim()
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        let encontrados = 0;
+
+        livros.forEach(function(livro) {
+
+          const nome =
+            livro
+              .querySelector("a")
+              .textContent
+              .trim()
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "");
+
+          if (nome.includes(busca)) {
+
+            livro.style.display = "block";
+
+            encontrados++;
+
+          } else {
+
+            livro.style.display = "none";
+
+          }
+
+        });
+
+        if (busca !== "" && encontrados === 0) {
+
+          mensagem.innerHTML =
+            '<div class="nenhum-resultado">' +
+            '😕 Nenhum livro encontrado.' +
+            '<br><br>' +
+            'Tente outra palavra.' +
+            '</div>';
+
+        } else {
+
+          mensagem.innerHTML = "";
+
+        }
+
       });
 
     });
+
   </script>
 
 </body>
+
 </html>
+
+
 
 
 
